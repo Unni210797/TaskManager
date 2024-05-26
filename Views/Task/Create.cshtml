@@ -1,0 +1,68 @@
+﻿@model Task_Management_System.ViewModel.TaskViewModel
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{
+    var data = ViewBag.Username;
+    //value="@Model.Username"
+}
+
+<h1>Create</h1>
+
+<h4>TaskInfo</h4>
+<hr />
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center mb-4">Create Task</h2>
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group mb-4">
+                    <label asp-for="Username" class="control-label"></label>
+                    <input asp-for="Username" class="form-control" readonly />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <label asp-for="Project" class="control-label">Project</label>
+                    <input asp-for="Project" class="form-control" />
+                    <span asp-validation-for="Project" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <label asp-for="Description" class="control-label">Description</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <label asp-for="DueDate" class="control-label">Due Date</label>
+                    <input asp-for="DueDate" type="date" class="form-control" />
+                    <span asp-validation-for="DueDate" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label asp-for="Status" class="control-label">Status</label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="Completed">Completed</option>
+                        <option value="Incomplete">Incomplete</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <a asp-action="Index" class="btn btn-secondary">Go to List</a>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

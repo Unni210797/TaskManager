@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Task_Management_System.Models.TaskInfos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Task Management System</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Task</a>
+</p>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label>Status:</label>
+            <select id="statusFilter" class="form-control">
+                <option value="">All</option>
+                <option value="Incomplete">Incomplete</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label>Due Date:</label>
+            <input id="dueDateFilter" type="date" class="form-control" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <button id="applyFiltersBtn" class="btn btn-primary">Apply Filters</button>
+        </div>
+    </div>
+</div>
+
+<table id="taskTable" class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <th>@Html.DisplayNameFor(model => model.Project)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.DueDate)</th>
+            <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Project)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.DueDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#applyFiltersBtn').click(function () {
+                var status = $('#statusFilter').val();
+                var dueDate = $('#dueDateFilter').val();
+
+                // Call action method to get filtered data
+                $.ajax({
+                    url: '@Url.Action("FilterTasks", "Task")',
+                    type: 'GET',
+                    data: { status: status, dueDate: dueDate },
+                    success: function (data) {
+                        $('#taskTable tbody').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+} *@

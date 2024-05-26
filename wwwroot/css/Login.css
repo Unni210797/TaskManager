@@ -1,0 +1,21 @@
+﻿
+.card {
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+.text-info {
+    color: #17a2b8 !important;
+}
+
+.text-danger {
+    font-size: 0.875em;
+}
