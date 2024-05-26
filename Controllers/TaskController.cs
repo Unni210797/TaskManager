@@ -41,7 +41,10 @@ namespace Task_Management_System.Controllers
                 {
                     return RedirectToAction("Create");
                 }
-
+                if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                {
+                    return PartialView("_TaskTablePartial", filterTaskByStatus);
+                }
                 return View(FilteredTask.filteredTasks);
             }
             else
