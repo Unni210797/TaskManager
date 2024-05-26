@@ -77,30 +77,7 @@ namespace Task_Management_System.Controllers
             }
            
         }
-        //public async Task<IActionResult> FilterTasks()
-        //{
-        //    List<TaskInfos> filterTaskByStatus = new List<TaskInfos>();
-        //    try
-        //    {
-
-        //        filterTaskByStatus = FilteredTask.filteredTasks;
-        //        if (dueDate == null && status != "All")
-        //        {
-
-        //            filterTaskByStatus = filterTaskByStatus.Where(u => u.Status == status).ToList();
-        //        }
-        //        else
-        //        {
-        //            filterTaskByStatus = filterTaskByStatus.Where(u => u.DueDate == DateOnly.Parse(dueDate)).ToList();
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //    return View(filterTaskByStatus);
-        //}
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
